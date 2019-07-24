@@ -1,5 +1,9 @@
 package com.alexandre.fenris.model;
 
+/**
+ * Created by AlexFenris
+ */
+
 public class User {
     private String mFirstname;
 

@@ -3,6 +3,10 @@ package com.alexandre.fenris.model;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Created by AlexFenris
+ */
+
 public class QuestionBank {
     private List<Question> mQuestionList;
     private int mNextQuestionIndex;

@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -16,6 +18,8 @@ import com.alexandre.fenris.model.Question;
 import com.alexandre.fenris.model.QuestionBank;
 
 import java.util.Arrays;
+
+import static java.lang.System.out;
 
 public class GameActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -29,17 +33,30 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
     private int mScore;
     private int mNumberOfQuestions;
+
     public static final String BUNDLE_EXTRA_SCORE = "BUNDLE_EXTRA_SCORE";
+    public static final String BUNDLE_STATE_SCORE = "BUNDLE_STATE_SCORE";
+    public static final String BUNDLE_STATE_QUESTION = "currentQuestion";
+    private boolean mEnableTouchEvents;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
+        System.out.println("GameActivity::onCreate");
+
         mQuestionBank = this.generateQuestions();
 
-        mScore = 0;
-        mNumberOfQuestions = 4;
+        if (savedInstanceState != null) {
+            mScore = savedInstanceState.getInt(BUNDLE_STATE_SCORE);
+            mNumberOfQuestions = savedInstanceState.getInt(BUNDLE_STATE_QUESTION);
+        } else {
+            mScore = 0;
+            mNumberOfQuestions = 6;
+        }
+
+        mEnableTouchEvents = true;
 
         // Wire widgets
         mQuestionTextView = findViewById(R.id.activity_game_question_text);
@@ -64,6 +81,13 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putInt(BUNDLE_STATE_SCORE, mScore);
+        outState.putInt(BUNDLE_STATE_QUESTION, mNumberOfQuestions);
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
     public void onClick(View view) {
         int responseIndex = (int) view.getTag();
 
@@ -75,15 +99,31 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             // Wrong answer
             Toast.makeText(this, "Wrong answer", Toast.LENGTH_SHORT).show();
         }
+        mEnableTouchEvents = false;
 
-        if (--mNumberOfQuestions == 0) {
-            // End the game
-            endGame();
-        } else {
-            mCurrentQuestion = mQuestionBank.getQuestion();
-            displayQuestion(mCurrentQuestion);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mEnableTouchEvents = true;
+
+                // If this is the last question, ends the game.
+                // Else, display the next question.
+                if (--mNumberOfQuestions == 0) {
+                    // End the game
+                    endGame();
+                } else {
+                    mCurrentQuestion = mQuestionBank.getQuestion();
+                    displayQuestion(mCurrentQuestion);
+                }
+
+            }
+        }, 2000); // LENGTH_SHORT is usually 2 second long
         }
-    }
+
+        @Override
+        public boolean dispatchTouchEvent(MotionEvent ev) {
+            return mEnableTouchEvents && super.dispatchTouchEvent(ev);
+        }
 
     private void endGame() {
         AlertDialog.Builder  builder= new  AlertDialog.Builder(this);
@@ -100,6 +140,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                         finish();
                     }
                 })
+                .setCancelable(false)
                 .create()
                 .show();
     }
@@ -143,6 +184,41 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                                                 question4,
                                                 question5,
                                                 question6));
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        out.println("MainActivity::onStart()");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        out.println("MainActivity::onResume()");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        out.println("MainActivity::onPause()");
+    }
+
+    @Override
+    protected void onStop(){
+        super.onStop();
+
+        out.println("MainActivity::onStop");
+    }
+
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+
+        out.println("MainActivity::onDestroy");
     }
 
 }
