@@ -99,7 +99,6 @@ public class MainActivity extends AppCompatActivity {
 
                 // user clicked the button
                 Intent gameActivityIntent = new Intent(MainActivity.this, GameActivity.class);
-                startActivity(gameActivityIntent);
                 startActivityForResult(gameActivityIntent, GAME_ACTIVITY_REQUEST_CODE);
 
             }

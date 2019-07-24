@@ -156,27 +156,27 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
     private QuestionBank generateQuestions() {
         Question question1 = new Question("What is the name of the network of computers from which the Internet has emerged?",
-                Arrays.asList("Internet, Arpanet, HTML, Linux"),
+                Arrays.asList("Internet", "Arpanet", "HTML", "Linux"),
                 1);
 
         Question question2 = new Question("In what year was Google launched on the web?",
-                Arrays.asList("1996, 1997, 1998, 1999"),
+                Arrays.asList("1996", "1997", "1998", "1999"),
                 2);
 
         Question question3 = new Question("What is the country top-level domain of Belgium?",
-                Arrays.asList(".be, .com, .net, org"),
+                Arrays.asList(".be", ".com", ".net", "org"),
                 0);
 
         Question question4 = new Question("Which unit is an indication for the sound quality of MP3?",
-                Arrays.asList("Db, Nax, Epndb, Kbps"),
+                Arrays.asList("Db", "Nax", "Epndb", "Kbps"),
                 3);
 
         Question question5 = new Question("In computing what is Ram short for?",
-                Arrays.asList("Random access memory, Usual memory, Internal memory,External memory"),
+                Arrays.asList("Random access memory", "Usual memory", "Internal memory","External memory"),
                 0);
 
         Question question6 = new Question("In which Nintendo DS game do you have to raise a puppy as well as possible?",
-                Arrays.asList("Tamaguci, Doc Dogs, Nintendogs, Dogs & Cats"),
+                Arrays.asList("Tamaguci", "Doc Dogs", "Nintendogs", "Dogs & Cats"),
                 2);
         return new QuestionBank(Arrays.asList(question1,
                                                 question2,
