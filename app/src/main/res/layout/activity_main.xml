@@ -11,10 +11,10 @@
         android:id="@+id/activity_main_greeting_txt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#ff0000"
+        android:background="#00BCD4"
         android:layout_margin="10dp"
         android:padding="20dp"
-        android:text="Welcome! What's your name?"/>
+        android:text="Bienvenue, quel est votre prènom ?"/>
 
     <EditText
         android:id="@+id/activity_main_name_input"
@@ -23,6 +23,15 @@
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         android:hint="Please type your name"/>
+
+    <TextView
+        android:id="@+id/subject_of_the_question_txt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#00BCD4"
+        android:layout_margin="10dp"
+        android:padding="20dp"
+        android:text="Quizz traitant des capitales d'Europe"/>
 
     <Button
         android:id="@+id/activity_main_play_btn"

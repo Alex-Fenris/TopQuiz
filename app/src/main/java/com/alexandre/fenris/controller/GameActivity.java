@@ -155,20 +155,20 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private QuestionBank generateQuestions() {
-        Question question1 = new Question("What is the name of the network of computers from which the Internet has emerged?",
-                Arrays.asList("Internet", "Arpanet", "HTML", "Linux"),
+        Question question1 = new Question("Quel est la capitale de l'Autriche ?",
+                Arrays.asList("Berlin", "Vienne", "La Valette", "Chisinau"),
                 1);
 
-        Question question2 = new Question("In what year was Google launched on the web?",
-                Arrays.asList("1996", "1997", "1998", "1999"),
+        Question question2 = new Question("Quel est la capitale de l'Allemagne ?",
+                Arrays.asList("Amsterdam", "Munich", "Berlin", "Paris"),
                 2);
 
-        Question question3 = new Question("What is the country top-level domain of Belgium?",
-                Arrays.asList(".be", ".com", ".net", "org"),
+        Question question3 = new Question("Quel est la capitale du Monténégro ?",
+                Arrays.asList("Podgorica", "Skopje", "Prague", "Varsovie"),
                 0);
 
-        Question question4 = new Question("Which unit is an indication for the sound quality of MP3?",
-                Arrays.asList("Db", "Nax", "Epndb", "Kbps"),
+        Question question4 = new Question("Quel est la capitale de la Roumanie?",
+                Arrays.asList("Berne", "Bratislava", "Moscou", "Bucarest"),
                 3);
 
         Question question5 = new Question("In computing what is Ram short for?",
