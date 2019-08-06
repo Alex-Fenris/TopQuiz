@@ -1,8 +1,5 @@
 package com.alexandre.fenris.controller;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +9,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.alexandre.fenris.R;
 import com.alexandre.fenris.model.Question;
@@ -171,12 +171,12 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                 Arrays.asList("Berne", "Bratislava", "Moscou", "Bucarest"),
                 3);
 
-        Question question5 = new Question("In computing what is Ram short for?",
-                Arrays.asList("Random access memory", "Usual memory", "Internal memory","External memory"),
+        Question question5 = new Question("A quel pays appartient la capitale Stockholm ?",
+                Arrays.asList("Suède", "Finlande", "Islande","Danemark"),
                 0);
 
-        Question question6 = new Question("In which Nintendo DS game do you have to raise a puppy as well as possible?",
-                Arrays.asList("Tamaguci", "Doc Dogs", "Nintendogs", "Dogs & Cats"),
+        Question question6 = new Question("A quel pays appartient la capitale de Budapest ?",
+                Arrays.asList("Lettonie", "Pologne", "Hongrie", "Ukraine"),
                 2);
         return new QuestionBank(Arrays.asList(question1,
                                                 question2,
